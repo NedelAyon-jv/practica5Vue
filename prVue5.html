@@ -1,0 +1,43 @@
+<template>
+    <form>
+        <label for="text">Texto:</label>
+        <input type="text" id="text" v-model="text" />
+        <p>{{ text }}</p>
+        <br />
+        <label for="numero">Numero 1:</label>
+        <input type="text" id="numero" v-model="numero" />
+        <br />
+        <label for="numero2">Numero 2:</label>
+        <input type="text" id="numero2" v-model="numero2" />
+        <br />
+        <button @click.prevent="suma">suma</button>
+    </form>
+    <br />
+    <p>{{ resultado }}</p>
+</template>
+
+<script>
+    import { ref } from "vue";
+    export default {
+        data() {
+            const text = ref("");
+            const numero = ref(0);
+            const numero2 = ref(0);
+            const resultado = ref("");
+            const suma = () => {
+                resultado.value = parseInt(numero.value) + parseInt(numero2.value);
+
+            }
+            return {
+                text,
+                numero,
+                numero2,
+                suma,
+                resultado
+            };
+        }
+    };
+    const app = createApp(App)
+    app.use(router)
+    app.mount('#app')
+</script>
